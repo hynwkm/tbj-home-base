@@ -66,7 +66,8 @@
     --color-brand-red-800: #600100;
     --color-brand-red-900: #360000;
 
-    --color-background: var(--color-brand-royal-blue-500);
+    --color-primary: var(--color-brand-royal-blue-500);
+    --color-primary-light: var(--color-brand-navy-blue-300);
     --color-table-header: var(--color-brand-navy-blue-200);
     --color-table-border: var(--color-brand-navy-blue-100);
 

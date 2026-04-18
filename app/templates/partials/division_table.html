@@ -17,9 +17,11 @@
             {% for team in division_standing.teams %}
                 <tr class="border-table-border border-t">
                     <td class="px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
-                        <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
-                             alt="{{ team.team_name }} logo"
-                             class="inline-block mr-2 w-auto h-6">
+                        <span class="inline-flex items-center mr-1 w-6 align-middle">
+                            <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
+                                 alt="{{ team.team_name }} logo"
+                                 class="block w-6 h-6 object-contain">
+                        </span>
                         {{ team.team_abbreviation }}
                     </td>
                     <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.wins }}</td>

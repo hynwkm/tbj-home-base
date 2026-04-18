@@ -10,13 +10,13 @@
         <link rel="stylesheet"
               href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
-    <body class="bg-background text-white flex flex-col min-h-screen font-sans">
+    <body class="flex flex-col bg-primary min-h-screen font-sans text-white">
         <header class="w-full">
-            <nav class="w-full flex justify-between items-center px-8 py-4 mx-auto max-w-[1500px]">
-                <a href="/" class="text-2xl font-bold ">
+            <nav class="flex justify-between items-center mx-auto px-8 py-4 w-full max-w-[1500px]">
+                <a href="/" class="font-bold text-2xl">
                     <img src="{{ url_for('static', filename='images/homebase-logo.png') }}"
                          alt="Homebase Logo"
-                         class="h-8 w-auto">
+                         class="w-auto h-8">
                 </a>
                 <div class="flex gap-8">
                     <a href="/standings">Standings</a>
@@ -25,7 +25,7 @@
                 </div>
             </nav>
         </header>
-        <main class=" flex-1 w-full">
+        <main class="flex-1 w-full">
             {% block content %}
             {% endblock content %}
         </main>
