@@ -16,6 +16,7 @@ def parse_team_record(team_record, team_info):
     return {
         "team_id": team.get("id"),
         "team_name": team.get("name"),
+        "team_full_name": team_info.get(team.get("id")).get("full_name"),
         "team_abbreviation": team_info.get(team.get("id")).get("abbreviation"),
         "wins": team_record.get("wins"),
         "losses": team_record.get("losses"),
@@ -27,6 +28,7 @@ def parse_team_record(team_record, team_info):
         "away_pct": away_record.get("pct", ""),
         "1run_pct": one_run_record.get("pct", ""),
         "xtra_inn_pct": extra_inn_record.get("pct", ""),
+        "division_rank": team_record.get("divisionRank"),
     }
 
 
@@ -51,7 +53,7 @@ def get_division_standings():
         division_id = division_info.get("id")
         team_records = sorted(
             record_group.get("teamRecords", []),
-            key=lambda team: team.get("divisionRank", 999),
+            key=lambda team: int(team.get("divisionRank", 999)),
         )
         divisions.append(
             {
@@ -62,3 +64,18 @@ def get_division_standings():
         )
 
     return divisions
+
+
+def get_team_standing_info(team_id):
+    division_standings = get_division_standings()
+
+    for division in division_standings:
+        for team in division["teams"]:
+            if team["team_id"] == team_id:
+                return {
+                    **team,
+                    "division_id": division["division_id"],
+                    "division_name": division["division_name"],
+                }
+
+    return None

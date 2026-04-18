@@ -22,7 +22,7 @@ DONE HOME PAGE
 - Fetch/Render: Divisional standings, news stories, 4 stat leaders
 - Refine UI: Typography and card components
 
-STANDINGS PAGE
+DONE STANDINGS PAGE
 - Build standings layout
 - Fetch divisional data
 - Add split columns: Home/Away %, 1-run games, Extra innings

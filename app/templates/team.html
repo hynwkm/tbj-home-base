@@ -3,5 +3,33 @@
     | Teams
 {% endblock title %}
 {% block content %}
-    <h1>Teams</h1>
+    <section class="space-y-4 mx-auto p-8 max-w-[1500px]">
+        <div class="flex items-center gap-4">
+            <img src="https://www.mlbstatic.com/team-logos/{{ team_info.team_id }}.svg"
+                 alt="{{ team_info.team_name }} logo"
+                 class="block bg-white rounded-full w-12 h-12 object-contain">
+            <div>
+                <h1 class="font-bold text-2xl">{{ team_info.team_full_name }}</h1>
+                <div class="flex items-center gap-2">
+                    <p class="text-primary-light">
+                        {{ team_info.division_rank }}{% set rank = team_info.division_rank | int %}
+                        {% if 10 <= (rank % 100) <= 20 %}
+                            th
+                        {% elif rank % 10 == 1 %}
+                            st
+                        {% elif rank % 10 == 2 %}
+                            nd
+                        {% elif rank % 10 == 3 %}
+                            rd
+                        {% else %}
+                            th
+                        {% endif %}
+                        in {{ team_info.division_name }}
+                    </p>
+                    <p>{{ team_info.wins }}-{{ team_info.losses }} ({{ team_info.pct }})</p>
+                    <div class="bg-white px-2 py-1 rounded-md w-fit text-primary text-xs">{{ team_info.gb }} GB</div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
