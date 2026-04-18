@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/static/fonts/Inter.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/static/fonts/Inter-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Chivo Mono";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/static/fonts/ChivoMono.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Chivo Mono";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/static/fonts/ChivoMonoItalic.ttf") format("truetype");
+}
+
+@theme {
+    --color-brand-navy-blue-50: #eff6ff;
+    --color-brand-navy-blue-100: #b3d3ff;
+    --color-brand-navy-blue-200: #79affa;
+    --color-brand-navy-blue-300: #588dd4;
+    --color-brand-navy-blue-400: #376bb0;
+    --color-brand-navy-blue-500: #134a8e;
+    --color-brand-navy-blue-600: #003e83;
+    --color-brand-navy-blue-700: #003069;
+    --color-brand-navy-blue-800: #00224f;
+    --color-brand-navy-blue-900: #001739;
+
+    --color-brand-royal-blue-50: #f1f5ff;
+    --color-brand-royal-blue-100: #b3c9ff;
+    --color-brand-royal-blue-200: #899fd5;
+    --color-brand-royal-blue-300: #6377ab;
+    --color-brand-royal-blue-400: #3f5182;
+    --color-brand-royal-blue-500: #1d2d5c;
+    --color-brand-royal-blue-600: #0a1856;
+    --color-brand-royal-blue-700: #02003d;
+    --color-brand-royal-blue-800: #00000f;
+    --color-brand-royal-blue-900: #000000;
+
+    --color-brand-red-50: #fff2ef;
+    --color-brand-red-100: #ffd0c8;
+    --color-brand-red-200: #ffac9f;
+    --color-brand-red-300: #ff8473;
+    --color-brand-red-400: #ff503e;
+    --color-brand-red-500: #e8291c;
+    --color-brand-red-600: #c70500;
+    --color-brand-red-700: #930300;
+    --color-brand-red-800: #600100;
+    --color-brand-red-900: #360000;
+
+    --color-background: var(--color-brand-royal-blue-500);
+    --color-table-header: var(--color-brand-navy-blue-200);
+    --color-table-border: var(--color-brand-navy-blue-100);
+
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Chivo Mono", ui-monospace, monospace;
+}
+
+@layer base {
+    html {
+        font-size: 14px;
+    }
+}

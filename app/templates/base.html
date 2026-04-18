@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homebase
+            {% block title %}
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet"
+              href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body class="bg-background text-white flex flex-col min-h-screen font-sans">
+        <header class="w-full">
+            <nav class="w-full flex justify-between items-center px-8 py-4 mx-auto max-w-[1500px]">
+                <a href="/" class="text-2xl font-bold ">
+                    <img src="{{ url_for('static', filename='images/homebase-logo.png') }}"
+                         alt="Homebase Logo"
+                         class="h-8 w-auto">
+                </a>
+                <div class="flex gap-8">
+                    <a href="/standings">Standings</a>
+                    <p href="/teams">Teams</p>
+                    <a href="/leaderboard">Leaders</a>
+                </div>
+            </nav>
+        </header>
+        <main class=" flex-1 w-full">
+            {% block content %}
+            {% endblock content %}
+        </main>
+    </body>
+</html>

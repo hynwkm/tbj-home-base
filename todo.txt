@@ -1,0 +1,66 @@
+MLB PROJECT ROADMAP
+DAY 1
+DONE SETUP & APP STRUCTURE
+- Stack: Flask, Jinja, Bootstrap
+- Initialize repo and virtual environment
+- Install: flask, httpx, feedparser, python-dotenv, pytest
+- Directory Structure: app/, templates/, static/, services/, tests/
+- Create entrypoint and verify local run
+- Set up routes: Home, Standings, Team, Player, Leaderboards
+- Create base.html: Nav, Footer, Global CSS rules
+- Add config.py for API URLs and constants
+
+DATA SERVICES
+- Create MLB StatsAPI service
+- Create MLB news RSS service
+- Build formatting helpers: %s, records, dates, rounding
+- Build calculation helpers: BB%, SO%
+- Add API error handling and basic caching
+
+HOME PAGE
+- Build landing page layout
+- Fetch/Render: Divisional standings, news stories, 4 stat leaders
+- Refine UI: Typography and card components
+
+STANDINGS PAGE
+- Build standings layout
+- Fetch divisional data
+- Add split columns: Home/Away %, 1-run games, Extra innings
+- Audit responsiveness and table readability
+
+--------------------------------------------------------------------------------
+
+DAY2
+PLAYER PAGE
+- Build hitter and pitcher layouts
+- Route: /player/:id (shared route with conditional rendering)
+- Data: Fetch bio, career stats, and season-by-season totals
+- Data: Fetch current projections and last 7 games
+- Logic: Compute BB% and K% (SO%)
+- QA: Verify hitter/pitcher toggle logic
+
+LEADERBOARDS
+- Design grid layout for 8 categories
+- Hitting: AVG, HR, RBI, OPS
+- Pitching: ERA, SO, WHIP, W
+- Fetch and render league-wide top 5 per category
+- Match site-wide table styling
+
+STYLING & POLISH
+- Integrate Bootstrap and custom CSS
+- Apply core visual system (fonts, spacing, card styles)
+- Implement responsive grid and horizontal table scrolling
+- Add loading skeletons and error/empty states
+- Finalize logo and asset usage
+
+QA & TESTING
+- Manual route audit (multi-team/multi-player check)
+- Unit tests: Stats calculations and date formatting
+- Error handling: Graceful failure for missing API data
+- Cross-browser UI verification
+
+SUBMISSION PREP
+- Clean code: Remove dead files and console logs
+- README: Setup, tech stack, and trade-offs
+- Documentation: Add screenshots of key views
+- Final push to repository

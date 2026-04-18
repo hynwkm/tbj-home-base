@@ -1,0 +1,35 @@
+<section class="bg-white rounded-xl overflow-hidden text-black">
+    <table class="w-full border-collapse">
+        <thead class="bg-table-header text-white">
+            <tr class="font-medium">
+                <th class="px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
+                    {{ division_standing.division_name }}
+                </th>
+                <th class="px-3 py-3 text-right">W</th>
+                <th class="px-3 py-3 text-right">L</th>
+                <th class="px-3 py-3 text-right">Pct</th>
+                <th class="px-3 py-3 text-right">GB</th>
+                <th class="px-3 py-3 text-right">L10</th>
+                <th class="py-3 pr-5 pl-3 text-right">Diff</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in division_standing.teams %}
+                <tr class="border-table-border border-t">
+                    <td class="px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
+                        <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
+                             alt="{{ team.team_name }} logo"
+                             class="inline-block mr-2 w-auto h-6">
+                        {{ team.team_abbreviation }}
+                    </td>
+                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.wins }}</td>
+                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.losses }}</td>
+                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.pct }}</td>
+                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.gb }}</td>
+                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.l10 }}</td>
+                    <td class="py-3 pr-5 pl-3 text-center whitespace-nowrap">{{ team.diff }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
