@@ -18,12 +18,9 @@ def format_published_at(epoch_str):
     return f"{dt.month}/{dt.day}/{year} — {time}"
 
 
-def get_mlb_news():
-    response = requests.get(f"{MLB_NEWS_RSS_URL}feeds/news/rss.xml", timeout=TIMEOUT)
-    response.raise_for_status()
-
-    feed = feedparser.parse(response.content)
-    soup = BeautifulSoup(response.content, "xml")
+def parse_news_resp(content, limit=8):
+    feed = feedparser.parse(content)
+    soup = BeautifulSoup(content, "xml")
 
     items = soup.find_all("item")[:8]
     entries = feed.entries[:8]
@@ -49,3 +46,19 @@ def get_mlb_news():
         )
 
     return articles
+
+
+def get_mlb_news():
+    response = requests.get(f"{MLB_NEWS_RSS_URL}feeds/news/rss.xml", timeout=TIMEOUT)
+    response.raise_for_status()
+
+    return parse_news_resp(response.content)
+
+
+def get_team_news(team_slug):
+    response = requests.get(
+        f"{MLB_NEWS_RSS_URL}{team_slug}/feeds/news/rss.xml", timeout=TIMEOUT
+    )
+    response.raise_for_status()
+
+    return parse_news_resp(response.content)

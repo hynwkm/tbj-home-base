@@ -12,16 +12,19 @@
     </head>
     <body class="flex flex-col bg-primary min-h-screen font-sans text-white">
         <header class="w-full">
-            <nav class="flex justify-between items-center mx-auto px-8 py-4 w-full max-w-[1500px]">
+            <nav class="flex justify-between items-center mx-auto px-8 w-full max-w-[1500px]">
                 <a href="/" class="font-bold text-2xl">
                     <img src="{{ url_for('static', filename='images/homebase-logo.png') }}"
                          alt="Homebase Logo"
                          class="w-auto h-8">
                 </a>
                 <div class="flex gap-8">
-                    <a href="/standings">Standings</a>
-                    <p href="/teams">Teams</p>
-                    <a href="/leaderboard">Leaders</a>
+                    <a href="/standings"
+                       class="py-4 border-primary border-y-2 hover:border-b-white">Standings</a>
+                    <p href="/teams"
+                       class="py-4 border-primary border-y-2 hover:border-b-white">Teams</p>
+                    <a href="/leaderboard"
+                       class="py-4 border-primary border-y-2 hover:border-b-white">Leaders</a>
                 </div>
             </nav>
         </header>

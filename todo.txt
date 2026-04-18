@@ -17,7 +17,7 @@ DATA SERVICES
 - Build calculation helpers: BB%, SO%
 - Add API error handling and basic caching
 
-HOME PAGE
+DONE HOME PAGE
 - Build landing page layout
 - Fetch/Render: Divisional standings, news stories, 4 stat leaders
 - Refine UI: Typography and card components
