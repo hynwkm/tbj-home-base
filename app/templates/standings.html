@@ -3,8 +3,12 @@
     | Standings
 {% endblock title %}
 {% block content %}
-    <section class="mx-auto max-w-[1500px] p-8">
-        <h1 class="text-2xl font-bold">Standings</h1>
-        <div class="grid grid-cols-2 gap-4"></div>
+    <section class="space-y-4 mx-auto p-8 max-w-[1500px]">
+        <h1 class="font-bold text-2xl">Standings</h1>
+        <div class="flex flex-col gap-4 md:grid md:grid-rows-3 md:grid-flow-col">
+            {% for division_standing in division_standings %}
+                {% include "partials/division_table.html" %}
+            {% endfor %}
+        </div>
     </section>
 {% endblock content %}

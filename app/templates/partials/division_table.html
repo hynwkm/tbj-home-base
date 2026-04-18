@@ -1,37 +1,33 @@
 <section class="bg-white rounded-xl overflow-hidden text-black">
-    <table class="w-full border-collapse">
-        <thead class="bg-table-header text-white">
-            <tr class="font-medium">
-                <th class="px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
-                    {{ division_standing.division_name }}
-                </th>
-                <th class="px-3 py-3 text-right">W</th>
-                <th class="px-3 py-3 text-right">L</th>
-                <th class="px-3 py-3 text-right">Pct</th>
-                <th class="px-3 py-3 text-right">GB</th>
-                <th class="px-3 py-3 text-right">L10</th>
-                <th class="py-3 pr-5 pl-3 text-right">Diff</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for team in division_standing.teams %}
-                <tr class="border-table-border border-t">
-                    <td class="px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
-                        <span class="inline-flex items-center mr-1 w-6 align-middle">
-                            <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
-                                 alt="{{ team.team_name }} logo"
-                                 class="block w-6 h-6 object-contain">
-                        </span>
-                        {{ team.team_abbreviation }}
-                    </td>
-                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.wins }}</td>
-                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.losses }}</td>
-                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.pct }}</td>
-                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.gb }}</td>
-                    <td class="px-3 py-3 text-center whitespace-nowrap">{{ team.l10 }}</td>
-                    <td class="py-3 pr-5 pl-3 text-center whitespace-nowrap">{{ team.diff }}</td>
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+            <thead class="bg-table-header text-white">
+                <tr class="font-medium">
+                    <th class="bg-table-header left-0 z-20 sticky px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
+                        {{ division_standing.division_name }}
+                    </th>
+                    {% for column in columns %}
+                        <th class="px-3 py-3 text-center whitespace-nowrap z-10 {% if loop.last %}pr-5{% endif %}">{{ column.label }}</th>
+                    {% endfor %}
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for team in division_standing.teams %}
+                    <tr class="border-table-border border-t">
+                        <td class="left-0 z-20 sticky bg-white px-4 py-3 w-full overflow-hidden text-left text-ellipsis whitespace-nowrap">
+                            <span class="inline-flex items-center mr-1 w-6 align-middle">
+                                <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
+                                     alt="{{ team.team_name }} logo"
+                                     class="block w-6 h-6 object-contain">
+                            </span>
+                            {{ team.team_abbreviation }}
+                        </td>
+                        {% for column in columns %}
+                            <td class="px-3 py-3 text-center whitespace-nowrap z-10 {% if loop.last %}pr-5{% endif %}">{{ team[column.key] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </section>

@@ -6,6 +6,15 @@ from .services.standings import get_division_standings
 
 home_blueprint = Blueprint("home", __name__)
 
+HOMEPAGE_STANDINGS_COLUMNS = [
+    {"key": "wins", "label": "W"},
+    {"key": "losses", "label": "L"},
+    {"key": "pct", "label": "Pct"},
+    {"key": "gb", "label": "GB"},
+    {"key": "l10", "label": "L10"},
+    {"key": "diff", "label": "Diff"},
+]
+
 
 @home_blueprint.route("/")
 @home_blueprint.route("/home")
@@ -16,5 +25,9 @@ def index():
     leaders = get_stat_leaders()
 
     return render_template(
-        "index.html", division_standings=division_standings, news=news, leaders=leaders
+        "index.html",
+        division_standings=division_standings,
+        columns=HOMEPAGE_STANDINGS_COLUMNS,
+        news=news,
+        leaders=leaders,
     )
