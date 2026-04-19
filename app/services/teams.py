@@ -12,6 +12,7 @@ def get_team_lookup():
 
     return {
         team["id"]: {
+            "team_id": team["id"],
             "abbreviation": team["abbreviation"],
             "name": team["teamName"],
             "full_name": team["name"],

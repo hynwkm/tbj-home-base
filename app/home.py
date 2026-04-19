@@ -17,8 +17,6 @@ HOMEPAGE_STANDINGS_COLUMNS = [
 
 
 @home_blueprint.route("/")
-@home_blueprint.route("/home")
-@home_blueprint.route("/index")
 def index():
     division_standings = get_division_standings()
     news = get_mlb_news()

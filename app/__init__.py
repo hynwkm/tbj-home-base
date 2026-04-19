@@ -4,6 +4,12 @@ from flask import Flask
 def create_app():
     app = Flask(__name__)
 
+    @app.context_processor
+    def inject_teams():
+        from .services.teams import get_team_lookup
+
+        return {"teams": list(get_team_lookup().values())}
+
     from .home import home_blueprint
     from .leaderboard import leaderboard_blueprint
     from .players import players_blueprint

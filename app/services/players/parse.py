@@ -49,6 +49,6 @@ def parse_player(player):
 
     return {
         **parse_player_bio(person),
-        "hitting_stats": stats_by_group.get("hitting", []),
-        "pitching_stats": stats_by_group.get("pitching", []),
+        "hitting_stats": stats_by_group.get("hitting", {}),
+        "pitching_stats": stats_by_group.get("pitching", {}),
     }

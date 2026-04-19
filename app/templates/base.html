@@ -11,19 +11,27 @@
               href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body class="flex flex-col bg-primary min-h-screen font-sans text-white">
-        <header class="w-full">
+        <div id="overlay"
+             class="hidden top-0 left-0 z-40 fixed bg-black/50 w-full h-full"></div>
+        <header class="z-50 w-full">
             <nav class="flex justify-between items-center mx-auto px-8 w-full max-w-[1500px]">
-                <a href="/" class="font-bold text-2xl">
+                <a href="{{ url_for("home.index") }}" class="font-bold text-2xl">
                     <img src="{{ url_for('static', filename='images/homebase-logo.png') }}"
                          alt="Homebase Logo"
                          class="w-auto h-8">
                 </a>
                 <div class="flex gap-8">
-                    <a href="/standings"
+                    <a href="{{ url_for("standings.standings") }}"
                        class="py-4 border-primary border-y-2 hover:border-b-white">Standings</a>
-                    <p href="/teams"
-                       class="py-4 border-primary border-y-2 hover:border-b-white">Teams</p>
-                    <a href="/leaderboard"
+                    <div class="relative">
+                        <button id="team-dropdown-button"
+                                type="button"
+                                class="py-4 border-primary border-y-2 hover:border-b-white cursor-pointer">
+                            Teams
+                        </button>
+                        {% include "partials/teams_dropdown.html" %}
+                    </div>
+                    <a href="{{ url_for("leaderboard.leaderboards") }}"
                        class="py-4 border-primary border-y-2 hover:border-b-white">Leaders</a>
                 </div>
             </nav>
@@ -32,5 +40,6 @@
             {% block content %}
             {% endblock content %}
         </main>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
 </html>

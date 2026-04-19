@@ -1,0 +1,14 @@
+<ul id="team-dropdown"
+    class="hidden top-full sm:right-0 left-1/2 sm:left-auto z-50 absolute grid grid-cols-3 sm:grid-cols-6 bg-white shadow-lg mt-2 rounded-xl w-max max-w-[calc(100vw-2rem)] overflow-hidden text-black -translate-x-1/2 sm:translate-x-0">
+    {% for team in teams %}
+        <li>
+            <a href="{{ url_for('teams.team', team_id=team.team_id) }}"
+               class="flex items-center gap-2 hover:bg-gray-100 px-3 py-2 whitespace-nowrap">
+                <img src="https://www.mlbstatic.com/team-logos/{{ team.team_id }}.svg"
+                     alt="{{ team.full_name }} logo"
+                     class="block w-6 h-6 object-contain shrink-0">
+                <span class="font-medium text-sm">{{ team.abbreviation }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
