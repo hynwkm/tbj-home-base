@@ -22,17 +22,26 @@
                 </a>
                 <div class="flex gap-8">
                     <a href="{{ url_for("standings.standings") }}"
-                       class="py-4 border-primary border-y-2 hover:border-b-white">Standings</a>
+                       class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint =='standings.standings' %}border-b-white{% endif %}">Standings</a>
                     <div class="relative">
                         <button id="team-dropdown-button"
                                 type="button"
-                                class="py-4 border-primary border-y-2 hover:border-b-white cursor-pointer">
+                                class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint == 'teams.team' %}border-b-white{% endif %}">
                             Teams
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="12"
+                                 height="12"
+                                 fill="currentColor"
+                                 viewBox="0 0 256 256"
+                                 class="inline-block ml-1">
+                                <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z">
+                                </path>
+                            </svg>
                         </button>
                         {% include "partials/teams_dropdown.html" %}
                     </div>
                     <a href="{{ url_for("leaderboard.leaderboards") }}"
-                       class="py-4 border-primary border-y-2 hover:border-b-white">Leaders</a>
+                       class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint == 'leaderboard.leaderboards' %}border-b-white{% endif %}">Leaders</a>
                 </div>
             </nav>
         </header>

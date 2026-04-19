@@ -1,0 +1,72 @@
+<section class="bg-white rounded-xl h-1/2 overflow-hidden text-black text-xs sm:text-sm">
+    <div class="h-full overflow-x-auto overflow-y-auto no-scrollbar">
+        <table class="w-full border-collapse">
+            <thead class="bg-table-header text-white">
+                <tr class="font-medium">
+                    <th class="bg-table-header top-0 left-0 z-30 sticky px-2 sm:px-3 py-2 w-12 min-w-12 text-left whitespace-nowrap">
+                        Year
+                    </th>
+                    <th class="bg-table-header top-0 left-12 z-30 sticky px-2 sm:px-3 py-2 w-full min-w-36 text-left whitespace-nowrap">
+                        Team
+                    </th>
+                    {% for column in columns %}
+                        <th class="px-4 py-2 text-center bg-table-header whitespace-nowrap min-w-9 top-0 sticky z-10 {% if loop.last %}pr-5{% endif %} {% if player.is_pitcher and loop.index in [6, 13] %}border-r border-r-white{% endif %} {% if not player.is_pitcher and loop.index in [2, 7, 12, 16] %}border-r border-r-white{% endif %}">
+                            {{ column.label }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for year in stats.yearByYear %}
+                    <tr class="border-table-border border-t">
+                        <td class="left-0 z-20 sticky bg-white px-2 sm:px-3 py-2 sm:py-0 w-12 min-w-12 font-bold text-left whitespace-nowrap">
+                            {{ year.season }}
+                        </td>
+                        <td class="left-12 z-20 sticky bg-white px-2 sm:px-3 py-2 sm:py-0 w-full min-w-36 font-medium text-left whitespace-nowrap">
+                            <a class="flex items-center gap-2 min-w-0 font-bold text-primary"
+                               href="/teams/{{ year.team_id }}">
+                                <span class="hidden sm:flex justify-center items-center w-10 h-10 shrink-0">
+                                    <img src="https://www.mlbstatic.com/team-logos/{{ year.team_id }}.svg"
+                                         alt="{{ year.team_name }} logo"
+                                         class="block w-6 h-6 object-contain">
+                                </span>
+                                <span class="block truncate">{{ year.team_name }}</span>
+                            </a>
+                        </td>
+                        {% for column in columns %}
+                            <td class="z-10 px-3 sm:px-4 py-2 sm:py-0 min-w-9 text-center whitespace-nowrap {% if loop.last %}pr-5{% endif %} {% if player.is_pitcher and loop.index in [6, 13] %}border-r border-r-table-border{% endif %} {% if not player.is_pitcher and loop.index in [2, 7, 12, 16] %}border-r border-r-table-border{% endif %}">
+                                {{ year[column.key] }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                {% set projected = stats.projected %}
+                <tr class="bg-amber-100 border-table-border border-t text-primary italic">
+                    <td class="left-0 z-20 sticky bg-amber-100 px-2 sm:px-3 py-2 w-12 min-w-12 font-bold text-left whitespace-nowrap">
+                        {{ projected.season }}
+                    </td>
+                    <td class="left-12 z-20 sticky bg-amber-100 px-2 sm:px-3 py-2 w-full min-w-36 font-medium text-left whitespace-nowrap">
+                        Projected
+                    </td>
+                    {% for column in columns %}
+                        <td class="z-10 px-3 sm:px-4 py-2 min-w-9 bg-amber-100 text-center whitespace-nowrap {% if loop.last %}pr-5{% endif %} {% if player.is_pitcher and loop.index in [6, 13] %}border-r border-r-table-border{% endif %} {% if not player.is_pitcher and loop.index in [2, 7, 12, 16] %}border-r border-r-table-border{% endif %}">
+                            {{ projected[column.key] }}
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% set career = stats.career %}
+                <tr class="bg-table-row border-table-border border-t text-primary">
+                    <td class="bg-table-row left-0 z-20 sticky px-2 py-2 w-12 min-w-12 font-bold text-left whitespace-nowrap"></td>
+                    <td class="bg-table-row left-12 z-20 sticky px-3 py-2 w-full min-w-36 font-medium text-left whitespace-nowrap">
+                        Career
+                    </td>
+                    {% for column in columns %}
+                        <td class="z-10 px-3 sm:px-4 py-2 min-w-9 bg-table-row text-center whitespace-nowrap {% if loop.last %}pr-5{% endif %} {% if player.is_pitcher and loop.index in [6, 13] %}border-r border-r-table-border{% endif %} {% if not player.is_pitcher and loop.index in [2, 7, 12, 16] %}border-r border-r-table-border{% endif %}">
+                            {{ career[column.key] }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

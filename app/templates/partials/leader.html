@@ -1,15 +1,17 @@
-<article class="flex flex-col bg-white rounded-md w-full overflow-hidden text-black text-sm">
-    <div class="px-4 py-1 font-semibold text-primary">
-        <h4>{{ leader.label }}</h4>
-    </div>
-    <div class="flex justify-between items-center bg-primary-light text-white">
-        <div class="flex items-center gap-2 align-middle">
-            <img src="{{ leader.headshot_url }}"
-                 alt="{{ leader.player_name }}"
-                 class="w-16 h-16 object-contain">
-            <p class="font-medium text-base whitespace-nowrap">{{ leader.player_name }}</p>
-            <p class="text-white/70 text-xs">{{ leader.team_initials }}</p>
+<a href="{{ url_for('players.player', player_id=leader.player_id) }}">
+    <article class="flex flex-col bg-white rounded-md w-full overflow-hidden text-black text-sm hover:scale-102 transition-transform">
+        <div class="px-4 py-1 font-semibold text-primary">
+            <h4>{{ leader.label }}</h4>
         </div>
-        <p class="px-4 text-base">{{ leader.value }}</p>
-    </div>
-</article>
+        <div class="flex justify-between items-center bg-primary-light text-white">
+            <div class="flex items-center gap-2 align-middle">
+                <img src="{{ leader.headshot_url }}"
+                     alt="{{ leader.player_name }}"
+                     class="w-16 h-16 object-contain">
+                <p class="font-medium text-base whitespace-nowrap">{{ leader.player_name }}</p>
+                <p class="text-white/70 text-xs">{{ leader.team_initials }}</p>
+            </div>
+            <p class="px-4 text-base">{{ leader.value }}</p>
+        </div>
+    </article>
+</a>

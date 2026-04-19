@@ -3,5 +3,55 @@
     | Player
 {% endblock title %}
 {% block content %}
-    <h1>Player</h1>
+    <section class="space-y-4 mx-auto p-8 max-w-[1500px]">
+        <div class="flex sm:flex-row flex-col justify-between gap-4 w-full">
+            <div class="flex items-center gap-4 whitespace-nowrap">
+                <img src="https://content.mlb.com/images/headshots/current/60x60/{{ player_id }}@2x.png"
+                     alt="{{ player.last_first_name }} headshot"
+                     class="block bg-white rounded-full w-24 h-24 object-contain">
+                <div>
+                    <h1 class="font-bold text-2xl">{{ player.last_first_name }}</h1>
+                    <div class="flex items-center gap-2">
+                        <p class="text-primary-light">{{ player.position }}</p>
+                        <p>{{ player.current_team_name }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="flex flex-col justify-center items-center">
+                    {% if player.is_pitcher %}
+                        <p class="text-primary-light">Throws</p>
+                        <p class="font-semibold text-xl">{{ player.t_hand }}</p>
+                    {% else %}
+                        <p class="text-primary-light">B/T</p>
+                        <p class="font-semibold text-xl">{{ player.b_side }}/{{ player.t_hand }}</p>
+                    {% endif %}
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-primary-light">Age</p>
+                    <p class="font-semibold text-xl">{{ player.age }}</p>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-primary-light">H</p>
+                    <p class="font-semibold text-xl">{{ player.height }}</p>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-primary-light">W</p>
+                    <p class="font-semibold text-xl">{{ player.weight }}</p>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <p class="text-primary-light">Drafted</p>
+                    <p class="font-semibold text-xl">{{ player.draft_year }}</p>
+                </div>
+            </div>
+        </div>
+        {% if player.is_pitcher %}
+            {% set stats = player.pitching_stats %}
+            {% set columns = pitcher_columns %}
+        {% else %}
+            {% set stats = player.hitting_stats %}
+            {% set columns = hitter_columns %}
+        {% endif %}
+        {% include "partials/player_stats_table.html" %}
+    </section>
 {% endblock content %}

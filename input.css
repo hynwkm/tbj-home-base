@@ -71,6 +71,7 @@
     --color-primary-light: var(--color-brand-navy-blue-300);
     --color-table-header: var(--color-brand-navy-blue-300);
     --color-table-border: var(--color-brand-navy-blue-100);
+    --color-table-row: var(--color-brand-navy-blue-50);
 
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Chivo Mono", ui-monospace, monospace;

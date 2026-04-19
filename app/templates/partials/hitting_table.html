@@ -23,15 +23,16 @@
                             {{ player.jersey_number }}
                         </td>
                         <td class="left-22 z-20 sticky bg-white px-3 w-full min-w-40 text-left whitespace-nowrap">
-                            <div class="flex items-center gap-2 min-w-0 font-bold text-primary">
+                            <a class="flex items-center gap-2 min-w-0 font-bold text-primary"
+                               href="{{ url_for('players.player', player_id=player.player_id) }}">
                                 <span class="hidden sm:flex justify-center items-center w-10 h-10 shrink-0">
                                     <img src="https://content.mlb.com/images/headshots/current/60x60/{{ player.player_id }}@2x.png"
-                                         alt="{{ player.last_first_name }} logo"
+                                         alt="{{ player.last_first_name }} headshot"
                                          class="block w-10 h-10 object-contain">
                                 </span>
                                 <span class="sm:hidden block truncate">{{ player.initials }}</span>
                                 <span class="hidden sm:block truncate">{{ player.last_first_name }}</span>
-                            </div>
+                            </a>
                         </td>
                         {% for column in HITTER_COLUMNS %}
                             <td class="px-3 py-2 text-center min-w-9 whitespace-nowrap z-10 {% if loop.last %}pr-5{% endif %}">
