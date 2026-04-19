@@ -1,0 +1,46 @@
+<section class="bg-white rounded-xl h-1/2 overflow-hidden text-black text-sm">
+    <div class="h-full overflow-x-auto overflow-y-auto no-scrollbar">
+        <table class="w-full border-collapse">
+            <thead class="bg-table-header text-white">
+                <tr class="font-medium">
+                    <th class="bg-table-header top-0 left-0 z-30 sticky px-2 py-2 w-12 min-w-12 text-left whitespace-nowrap">Pos</th>
+                    <th class="bg-table-header top-0 left-12 z-30 sticky px-2 py-2 w-10 min-w-10 text-left whitespace-nowrap">#</th>
+                    <th class="bg-table-header top-0 left-22 z-30 sticky px-3 py-2 w-full min-w-40 text-left whitespace-nowrap">Batter</th>
+                    {% for column in PITCHER_COLUMNS %}
+                        <th class="px-3 py-2 text-center bg-table-header whitespace-nowrap min-w-9 top-0 sticky z-10 {% if loop.last %}pr-5{% endif %}">
+                            {{ column.label }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in pitchers %}
+                    <tr class="border-table-border border-t">
+                        <td class="left-0 z-20 sticky bg-white px-2 py-2 w-12 min-w-12 font-bold text-left whitespace-nowrap">
+                            {{ player.position }}
+                        </td>
+                        <td class="left-12 z-20 sticky bg-white px-2 py-2 w-10 min-w-10 min-w-3 font-medium text-primary-light text-left whitespace-nowrap">
+                            {{ player.jersey_number }}
+                        </td>
+                        <td class="left-22 z-20 sticky bg-white px-3 w-full min-w-40 text-left whitespace-nowrap">
+                            <div class="flex items-center gap-2 min-w-0 font-bold text-primary">
+                                <span class="hidden sm:flex justify-center items-center w-10 h-10 shrink-0">
+                                    <img src="https://content.mlb.com/images/headshots/current/60x60/{{ player.player_id }}@2x.png"
+                                         alt="{{ player.last_first_name }} logo"
+                                         class="block w-10 h-10 object-contain">
+                                </span>
+                                <span class="sm:hidden block truncate">{{ player.initials }}</span>
+                                <span class="hidden sm:block truncate">{{ player.last_first_name }}</span>
+                            </div>
+                        </td>
+                        {% for column in PITCHER_COLUMNS %}
+                            <td class="px-3 py-2 text-center min-w-9 whitespace-nowrap z-10 {% if loop.last %}pr-5{% endif %}">
+                                {{ player[column.key] if column.key in player else player.pitching_stats.get(column.key) }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -31,5 +31,23 @@
                 </div>
             </div>
         </div>
+        <div class="flex flex-col gap-4 h-screen">
+            <h2 class="font-bold text-2xl">
+                Hitters
+            </h1>
+            {% include "partials/hitting_table.html" %}
+            <h2 class="font-bold text-2xl">Pitchers</h2>
+            {% include "partials/pitching_table.html" %}
+        </div>
+    </section>
+    <section class="bg-primary-hover">
+        <div class="space-y-4 mx-auto p-8 max-w-[1500px]">
+            <h2 class="font-bold text-2xl">{{ team_info.team_full_name }} News</h2>
+            <div class="flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid-cols-4">
+                {% for news_item in team_news[:4] %}
+                    {% include "partials/news_item.html" %}
+                {% endfor %}
+            </div>
+        </div>
     </section>
 {% endblock content %}
