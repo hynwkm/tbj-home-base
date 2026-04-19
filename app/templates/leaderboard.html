@@ -3,5 +3,23 @@
     | Leaderboard
 {% endblock title %}
 {% block content %}
-    <h1>League Leaders</h1>
+    <section class="space-y-4 mx-auto p-8 max-w-[1500px]">
+        <h1 class="font-bold text-2xl">League Leaders</h1>
+        <div class="flex flex-col gap-4">
+            <h2 class="font-semibold text-xl">Hitters</h2>
+            <div class="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+                {% for leader in hitters_leaders[:6] %}
+                    {% include "partials/leader.html" %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h2 class="font-semibold text-xl">Pitchers</h2>
+            <div class="flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+                {% for leader in pitchers_leaders[:6] %}
+                    {% include "partials/leader.html" %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock content %}

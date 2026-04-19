@@ -7,14 +7,29 @@ LEADER_LABELS = {
     "onBasePlusSlugging": "OPS",
     "strikeouts": "Strikeouts",
     "earnedRunAverage": "ERA",
+    "battingAverage": "Batting Average",
+    "runsBattedIn": "RBI",
+    "onBasePercentage": "OBP",
+    "wins": "Wins",
+    "saves": "Saves",
+    "walksAndHitsPerInningPitched": "WHIP",
+    "inningsPitched": "IP",
+    "sluggingPercentage": "SLG",
 }
-
 
 LEADER_ORDER = [
     "homeRuns",
     "onBasePlusSlugging",
     "strikeouts",
     "earnedRunAverage",
+    "runsBattedIn",
+    "battingAverage",
+    "onBasePercentage",
+    "sluggingPercentage",
+    "walksAndHitsPerInningPitched",
+    "inningsPitched",
+    "wins",
+    "saves",
 ]
 
 
@@ -64,6 +79,32 @@ def get_stat_leaders():
         {
             "leaderCategories": "homeRuns,onBasePlusSlugging,strikeouts,earnedRunAverage",
             "statGroup": "hitting,pitching",
+        },
+    )
+
+    return parse_leaderboard(data.get("leagueLeaders", []), team_lookup)
+
+
+def get_hitter_leaders():
+    team_lookup = get_team_lookup()
+    data = fetch_stats_api(
+        "/stats/leaders",
+        {
+            "leaderCategories": "onBasePlusSlugging,battingAverage,homeRuns,runsBattedIn,onBasePercentage,sluggingPercentage",
+            "statGroup": "hitting",
+        },
+    )
+
+    return parse_leaderboard(data.get("leagueLeaders", []), team_lookup)
+
+
+def get_pitcher_leaders():
+    team_lookup = get_team_lookup()
+    data = fetch_stats_api(
+        "/stats/leaders",
+        {
+            "leaderCategories": "earnedRunAverage,strikeouts,walksAndHitsPerInningPitched,saves,inningsPitched,wins",
+            "statGroup": "pitching",
         },
     )
 
