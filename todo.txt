@@ -39,7 +39,7 @@ PLAYER PAGE
 - Logic: Compute BB% and K% (SO%)
 - QA: Verify hitter/pitcher toggle logic
 
-LEADERBOARDS
+DONE LEADERBOARDS
 - Design grid layout for 8 categories
 - Hitting: AVG, HR, RBI, OPS
 - Pitching: ERA, SO, WHIP, W
