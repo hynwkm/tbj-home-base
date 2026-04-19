@@ -21,7 +21,7 @@ def parse_player_bio(player):
     }
 
 
-def parse_stats_by_group(stats_groups):
+def parse_stats_by_group(stats_groups: list):
     stats_by_group = {}
 
     for stats_group in stats_groups:
@@ -42,16 +42,13 @@ def parse_stats_by_group(stats_groups):
 
 
 def parse_player(player):
-    stats_by_group = parse_stats_by_group(player.get("stats", []))
+    person = player.get("person", {})
+    stats_groups: list = person.get("stats", [])
+
+    stats_by_group = parse_stats_by_group(stats_groups)
 
     return {
-        **parse_player_bio(player),
+        **parse_player_bio(person),
         "hitting_stats": stats_by_group.get("hitting", []),
         "pitching_stats": stats_by_group.get("pitching", []),
     }
-
-    return
-
-
-def parse_players(players):
-    return [parse_player(player) for player in players]

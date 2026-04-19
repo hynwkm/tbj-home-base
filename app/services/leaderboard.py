@@ -1,3 +1,4 @@
+from ..utils import player_headshot_url
 from .stats_api import fetch_stats_api
 from .teams import get_team_lookup
 
@@ -49,7 +50,7 @@ def parse_leaderboard(league_leaders, team_lookup):
                 "player_id": player_id,
                 "team_initials": team_lookup.get(team_id, {}).get("abbreviation", ""),
                 "player_name": top_leader.get("person", {}).get("fullName", ""),
-                "headshot_url": f"https://content.mlb.com/images/headshots/current/60x60/{player_id}@2x.png",
+                "headshot_url": player_headshot_url(player_id),
             }
         )
 
@@ -67,3 +68,16 @@ def get_stat_leaders():
     )
 
     return parse_leaderboard(data.get("leagueLeaders", []), team_lookup)
+
+
+def get_team_leaders(team_id):
+    team_lookup = get_team_lookup()
+    data = fetch_stats_api(
+        f"/teams/{team_id}/leaders",
+        {
+            "leaderCategories": "homeRuns,onBasePlusSlugging,strikeouts,earnedRunAverage",
+            "statGroup": "hitting,pitching",
+        },
+    )
+
+    return parse_leaderboard(data.get("teamLeaders", []), team_lookup)

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 
+from .services.leaderboard import get_team_leaders
 from .services.mlb_news import get_team_news
 from .services.standings import get_team_standing_info
 from .services.teams import get_team_roster_stats
@@ -44,6 +45,7 @@ def team(team_id):
     team_info = get_team_standing_info(team_id)
     roster_info = get_team_roster_stats(team_id)
     team_slug = team_info["team_name"].replace(" ", "").lower()
+    team_leaders = get_team_leaders(team_id)
 
     return render_template(
         "team.html",
@@ -53,4 +55,5 @@ def team(team_id):
         HITTER_COLUMNS=HITTER_COLUMNS,
         PITCHER_COLUMNS=PITCHER_COLUMNS,
         team_news=get_team_news(team_slug),
+        leaders=team_leaders,
     )
