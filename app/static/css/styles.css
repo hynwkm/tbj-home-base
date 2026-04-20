@@ -527,6 +527,9 @@
   .border-r-white {
     border-right-color: var(--color-white);
   }
+  .border-b-transparent {
+    border-bottom-color: transparent;
+  }
   .border-b-white {
     border-bottom-color: var(--color-white);
   }

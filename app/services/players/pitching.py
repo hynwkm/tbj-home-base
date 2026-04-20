@@ -14,7 +14,7 @@ def is_reliever(g_played, g_started, ip):
     gs_per_game = g_started / g_played if g_played else 0
     ip__per_game = innings / g_played if g_played else 0
 
-    return gs_per_game <= 0.25 and ip__per_game <= 2.5
+    return gs_per_game <= 0.20 and ip__per_game <= 2.0
 
 
 def parse_pitching_stats(stat):

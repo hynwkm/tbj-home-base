@@ -22,11 +22,11 @@
                 </a>
                 <div class="flex gap-8">
                     <a href="{{ url_for("standings.standings") }}"
-                       class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint =='standings.standings' %}border-b-white{% endif %}">Standings</a>
+                       class="py-4 border-t-2 border-t-transparent border-b-2 border-b-transparent hover:border-b-white cursor-pointer {% if request.endpoint =='standings.standings' %}border-b-white{% endif %}">Standings</a>
                     <div class="relative">
                         <button id="team-dropdown-button"
                                 type="button"
-                                class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint == 'teams.team' %}border-b-white{% endif %}">
+                                class="py-4 border-t-2 border-t-transparent border-b-2 border-b-transparent hover:border-b-white cursor-pointer {% if request.endpoint == 'teams.team' %}border-b-white{% endif %}">
                             Teams
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  width="12"
@@ -41,7 +41,7 @@
                         {% include "partials/teams_dropdown.html" %}
                     </div>
                     <a href="{{ url_for("leaderboard.leaderboards") }}"
-                       class="py-4 border-primary border-t-2 border-t-transparent hover:border-t-transparent border-b-2 hover:border-b-white cursor-pointer {% if request.endpoint == 'leaderboard.leaderboards' %}border-b-white{% endif %}">Leaders</a>
+                       class="py-4 border-t-2 border-t-transparent border-b-2 border-b-transparent hover:border-b-white cursor-pointer {% if request.endpoint == 'leaderboard.leaderboards' %}border-b-white{% endif %}">Leaders</a>
                 </div>
             </nav>
         </header>
