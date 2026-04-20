@@ -77,3 +77,29 @@ def parse_player(player):
         "hitting_stats": stats_by_group.get("hitting", {}),
         "pitching_stats": stats_by_group.get("pitching", {}),
     }
+
+
+def parse_game_log_stats(position, stat_splits):
+    parsed_game_logs = []
+    for split in stat_splits:
+        parsed_game_logs.append(
+            {
+                "date": split.get("date"),
+                "season": split.get("season"),
+                "position": position,
+                "opponent_id": split.get("opponent", {}).get("id"),
+                "opponent_name": split.get("opponent", {}).get("name"),
+                "summary": split.get("stat", {}).get("summary"),
+                "hits": split.get("stat", {}).get("hits"),
+                "runs": split.get("stat", {}).get("runs"),
+                "home_runs": split.get("stat", {}).get("homeRuns"),
+                "rbi": split.get("stat", {}).get("rbi"),
+                "pitches": split.get("stat", {}).get("numberOfPitches"),
+                "2b": split.get("stat", {}).get("doubles"),
+                "s_bases": split.get("stat", {}).get("stolenBases"),
+                "bf": split.get("stat", {}).get("battersFaced"),
+                "whip": split.get("stat", {}).get("walksAndHitsPerInningPitched"),
+            }
+        )
+
+    return parsed_game_logs

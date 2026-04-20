@@ -53,5 +53,9 @@
             {% set columns = hitter_columns %}
         {% endif %}
         {% include "partials/player_stats_table.html" %}
+        <div class="flex flex-col gap-4">
+            <h2 class="font-semibold text-xl">Recent Games</h2>
+            {% include "partials/recent_games_table.html" %}
+        </div>
     </section>
 {% endblock content %}

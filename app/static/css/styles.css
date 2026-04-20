@@ -227,6 +227,18 @@
   .left-22 {
     left: calc(var(--spacing) * 22);
   }
+  .left-24 {
+    left: calc(var(--spacing) * 24);
+  }
+  .left-28 {
+    left: calc(var(--spacing) * 28);
+  }
+  .left-57 {
+    left: calc(var(--spacing) * 57);
+  }
+  .left-64 {
+    left: calc(var(--spacing) * 64);
+  }
   .z-10 {
     z-index: 10;
   }
@@ -330,6 +342,15 @@
   .w-24 {
     width: calc(var(--spacing) * 24);
   }
+  .w-28 {
+    width: calc(var(--spacing) * 28);
+  }
+  .w-32 {
+    width: calc(var(--spacing) * 32);
+  }
+  .w-36 {
+    width: calc(var(--spacing) * 36);
+  }
   .w-auto {
     width: auto;
   }
@@ -362,6 +383,15 @@
   }
   .min-w-12 {
     min-width: calc(var(--spacing) * 12);
+  }
+  .min-w-24 {
+    min-width: calc(var(--spacing) * 24);
+  }
+  .min-w-28 {
+    min-width: calc(var(--spacing) * 28);
+  }
+  .min-w-32 {
+    min-width: calc(var(--spacing) * 32);
   }
   .min-w-36 {
     min-width: calc(var(--spacing) * 36);
@@ -471,10 +501,6 @@
     border-right-style: var(--tw-border-style);
     border-right-width: 1px;
   }
-  .border-r-2 {
-    border-right-style: var(--tw-border-style);
-    border-right-width: 2px;
-  }
   .border-b-2 {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 2px;
@@ -490,9 +516,6 @@
   }
   .border-r-table-border {
     border-right-color: var(--color-table-border);
-  }
-  .border-r-table-header {
-    border-right-color: var(--color-table-header);
   }
   .border-r-white {
     border-right-color: var(--color-white);
@@ -553,6 +576,9 @@
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
   }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
@@ -697,17 +723,6 @@
       }
     }
   }
-  .nth-6\:border-r-2 {
-    &:nth-child(6) {
-      border-right-style: var(--tw-border-style);
-      border-right-width: 2px;
-    }
-  }
-  .nth-6\:border-r-white {
-    &:nth-child(6) {
-      border-right-color: var(--color-white);
-    }
-  }
   .sm\:right-0 {
     @media (width >= 40rem) {
       right: calc(var(--spacing) * 0);
@@ -736,6 +751,16 @@
   .sm\:hidden {
     @media (width >= 40rem) {
       display: none;
+    }
+  }
+  .sm\:inline-block {
+    @media (width >= 40rem) {
+      display: inline-block;
+    }
+  }
+  .sm\:table-cell {
+    @media (width >= 40rem) {
+      display: table-cell;
     }
   }
   .sm\:translate-x-0 {

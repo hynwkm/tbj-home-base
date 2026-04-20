@@ -1,0 +1,46 @@
+<section class="bg-white rounded-xl h-1/2 overflow-hidden text-black text-sm">
+    <div class="h-full overflow-x-auto overflow-y-auto no-scrollbar">
+        <table class="w-full border-collapse">
+            <thead class="bg-table-header text-white">
+                <tr class="font-medium">
+                    <th class="bg-table-header top-0 left-0 z-30 sticky px-2 py-2 w-28 min-w-28 text-left whitespace-nowrap">Date</th>
+                    <th class="bg-table-header top-0 left-28 z-30 sticky px-2 py-2 w-36 min-w-36 text-left whitespace-nowrap">Opp</th>
+                    <th class="bg-table-header top-0 left-64 z-30 sticky px-3 py-2 w-full min-w-40 text-left whitespace-nowrap">
+                        Summary
+                    </th>
+                    {% for column in recent_games_columns %}
+                        <th class="hidden sm:table-cell bg-table-header top-0 z-10 sticky px-5 py-2 min-w-9 text-center whitespace-nowrap {% if loop.last %}pr-5{% endif %}">
+                            {{ column.label }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for game_log in game_logs %}
+                    <tr class="border-table-border border-t">
+                        <td class="left-0 z-20 sticky bg-white px-2 py-2 sm:py-0 w-28 min-w-28 font-bold text-left whitespace-nowrap">
+                            {{ game_log.date }}
+                        </td>
+                        <td class="left-28 z-20 sticky bg-white px-2 py-2 sm:py-0 w-36 min-w-3 min-w-36 font-medium text-primary-light text-left whitespace-nowrap">
+                            <a class="flex items-center gap-2 min-w-0 font-bold text-primary"
+                               href="{{ url_for('teams.team', team_id=game_log.opponent_id) }}">
+                                <span class="hidden sm:flex justify-center items-center w-10 h-10 shrink-0">
+                                    <img src="https://www.mlbstatic.com/team-logos/{{ game_log.opponent_id }}.svg"
+                                         alt="{{ game_log.opponent_name }} logo"
+                                         class="block w-6 h-6 object-contain">
+                                </span>
+                                <span class="block truncate">{{ game_log.opponent_name }}</span>
+                            </a>
+                        </td>
+                        <td class="left-64 z-20 sticky bg-white px-3 w-full min-w-40 text-left whitespace-nowrap">{{ game_log.summary }}</td>
+                        {% for column in recent_games_columns %}
+                            <td class="hidden sm:table-cell z-10 px-5 py-2 sm:py-0 min-w-9 text-center whitespace-nowrap {% if loop.last %}pr-5{% endif %}">
+                                {{ game_log[column.key] }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>

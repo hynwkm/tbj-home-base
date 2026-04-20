@@ -10,7 +10,7 @@ DONE SETUP & APP STRUCTURE
 - Create base.html: Nav, Footer, Global CSS rules
 - Add config.py for API URLs and constants
 
-DATA SERVICES
+DONE DATA SERVICES
 - Create MLB StatsAPI service
 - Create MLB news RSS service
 - Build formatting helpers: %s, records, dates, rounding
@@ -31,7 +31,7 @@ DONE STANDINGS PAGE
 --------------------------------------------------------------------------------
 
 DAY2
-PLAYER PAGE
+DONE PLAYER PAGE
 - Build hitter and pitcher layouts
 - Route: /player/:id (shared route with conditional rendering)
 - Data: Fetch bio, career stats, and season-by-season totals
