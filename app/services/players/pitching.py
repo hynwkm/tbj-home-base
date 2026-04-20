@@ -20,4 +20,5 @@ def parse_pitching_stats(stat):
         "so_bb": stat.get("strikeoutWalkRatio") or "-",
         "hr_allowed": stat.get("homeRuns", 0),
         "hr_9": stat.get("homeRunsPer9") or "-",
+        "ops": stat.get("ops") or "-",
     }

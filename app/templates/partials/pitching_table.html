@@ -36,7 +36,7 @@
                         </td>
                         {% for column in PITCHER_COLUMNS %}
                             <td class="px-3 py-2 text-center min-w-9 whitespace-nowrap z-10 {% if loop.last %}pr-5{% endif %}">
-                                {{ player[column.key] if column.key in player else player.pitching_stats.get(column.key) }}
+                                {{ player.get(column.key) if column.key in player else player.pitching_stats.get('season', {}).get(column.key, "-") }}
                             </td>
                         {% endfor %}
                     </tr>
