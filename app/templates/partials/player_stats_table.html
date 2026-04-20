@@ -24,7 +24,7 @@
                         </td>
                         <td class="left-12 z-20 sticky bg-white px-2 sm:px-3 py-2 sm:py-0 w-full min-w-36 font-medium text-left whitespace-nowrap">
                             <a class="flex items-center gap-2 min-w-0 font-bold text-primary"
-                               href="/teams/{{ year.team_id }}">
+                               href="{{ url_for('teams.team', team_id=year.team_id) }}">
                                 <span class="hidden sm:flex justify-center items-center w-10 h-10 shrink-0">
                                     <img src="https://www.mlbstatic.com/team-logos/{{ year.team_id }}.svg"
                                          alt="{{ year.team_name }} logo"
