@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from flask import Blueprint, render_template
 
 from .services.players import get_player_data, get_player_game_logs
