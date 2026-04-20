@@ -22,3 +22,4 @@ htmlcov/
 .idea/
 
 todo.txt
+*.code-workspace
