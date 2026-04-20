@@ -98,7 +98,7 @@ def parse_game_log_stats(position, stat_splits):
                 "2b": split.get("stat", {}).get("doubles"),
                 "s_bases": split.get("stat", {}).get("stolenBases"),
                 "bf": split.get("stat", {}).get("battersFaced"),
-                "whip": split.get("stat", {}).get("walksAndHitsPerInningPitched"),
+                "whip": split.get("stat", {}).get("whip"),
             }
         )
 
