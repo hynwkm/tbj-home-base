@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from flask import Blueprint, render_template
 
 from .services.leaderboard import get_team_leaders
@@ -48,8 +46,6 @@ def team(team_id):
     roster_info = get_team_roster_stats(team_id)
     team_slug = team_info["team_name"].replace(" ", "").lower()
     team_leaders = get_team_leaders(team_id)
-
-    pprint(roster_info["hitters"])
 
     return render_template(
         "team.html",

@@ -19,7 +19,7 @@
                         <td class="left-0 z-20 sticky bg-white px-2 py-2 w-12 min-w-12 font-bold text-left whitespace-nowrap">
                             {% if player.position != "P" %}
                                 {{ player.position }}
-                            {% elif player.is_reliever %}
+                            {% elif player.pitching_stats.get('season', {}).get('is_reliever') %}
                                 RP
                             {% else %}
                                 SP
