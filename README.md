@@ -6,7 +6,9 @@ A web app built for the Toronto Blue Jays developer exercise.
 
 ## Overview
 
-This project displays baseball data.
+This project displays baseball data using the MLB API.
+
+![Landing Page](screenshots/homebase_landing_screenshot.png)
 
 ## Features
 
