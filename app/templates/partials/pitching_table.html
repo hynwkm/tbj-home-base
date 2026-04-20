@@ -17,7 +17,13 @@
                 {% for player in pitchers %}
                     <tr class="border-table-border border-t">
                         <td class="left-0 z-20 sticky bg-white px-2 py-2 w-12 min-w-12 font-bold text-left whitespace-nowrap">
-                            {{ player.position }}
+                            {% if player.position != "P" %}
+                                {{ player.position }}
+                            {% elif player.is_reliever %}
+                                RP
+                            {% else %}
+                                SP
+                            {% endif %}
                         </td>
                         <td class="left-12 z-20 sticky bg-white px-2 py-2 w-10 min-w-10 min-w-3 font-medium text-primary-light text-left whitespace-nowrap">
                             {{ player.jersey_number }}
